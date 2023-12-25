@@ -6,14 +6,15 @@ namespace Ans.Net8.Common
 	public static partial class _Consts
 	{
 
-		public static readonly string[] FORBIDDEN_FILE_NAMES = {
-			"con","prn","aux","nul",
-			"com0","com1","com2","com3","com4","com5","com6","com7","com8","com9",
-			"lpt0","lpt1","lpt2","lpt3","lpt4","lpt5","lpt6","lpt7","lpt8","lpt9" };
+		public static readonly string[] FORBIDDEN_FILE_NAMES = ["con", "prn", "aux", "nul", "com0", "com1", "com2", "com3", "com4", "com5", "com6", "com7", "com8", "com9", "lpt0", "lpt1", "lpt2", "lpt3", "lpt4", "lpt5", "lpt6", "lpt7", "lpt8", "lpt9"];
 
 
 		public static readonly TimeSpan DAY_START_SPAN = new(0, 0, 0, 0);
 		public static readonly TimeSpan DAY_END_SPAN = new(0, 23, 59, 59);
+
+
+		public static readonly string[] MONTHS = Resources.Common.Array_Months.Split(';');
+		public static readonly string[] MONTHS2 = Resources.Common.Array_Months2.Split(';');
 
 
 		public static readonly string FORMAT_SAFE_DATETIME
@@ -36,7 +37,7 @@ namespace Ans.Net8.Common
 			= Encoding.UTF8;
 
 
-        /*
+		/*
 		 * Support win1251 and koi8r:
 		 * Using System.Text.Encoding.CodePages 
 		 * Program.cs -> 
@@ -46,7 +47,7 @@ namespace Ans.Net8.Common
 		 */
 
 
-        public static readonly Encoding ENCODING_WINDOWS1251
+		public static readonly Encoding ENCODING_WINDOWS1251
 			= Encoding.GetEncoding(1251);
 
 
@@ -62,7 +63,7 @@ namespace Ans.Net8.Common
 			= Encoding.GetEncoding("iso-8859-1");
 
 
-		public static readonly char[] SPLIT_ITEMS = new char[] { ';', ',' };
+		public static readonly char[] SPLIT_ITEMS = [';', ','];
 
 	}
 

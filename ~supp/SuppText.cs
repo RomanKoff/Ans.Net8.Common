@@ -29,7 +29,7 @@ namespace Ans.Net8.Common
 		{
 			if (string.IsNullOrEmpty(fio))
 				return string.Empty;
-			var a1 = fio.Split(new char[] { ' ', '.', ',', '-' },
+			var a1 = fio.Split(_separator,
 				StringSplitOptions.RemoveEmptyEntries);
 			var sb1 = new StringBuilder(a1[0]);
 			if (a1.Length > 1)
@@ -48,6 +48,7 @@ namespace Ans.Net8.Common
 				_ => s1
 			};
 		}
+		private static readonly char[] _separator = [' ', '.', ',', '-'];
 
 
 		public static string SampleRu()

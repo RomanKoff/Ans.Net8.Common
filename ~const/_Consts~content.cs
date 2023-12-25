@@ -9,7 +9,7 @@
 
 
 		public static readonly ContentInfo[] CONTENTINFOS =
-		{
+		[
 			// Arcive
 			new(".apk", "application/vnd.android.package-archive", ContentGroupEnum.Archive),
 			new(".gtar", "application/x-gtar", ContentGroupEnum.Archive),
@@ -74,7 +74,7 @@
 			new(".xlw", "application/vnd.ms-excel", ContentGroupEnum.Document),
 
 			// Image                           
-			new(".bmp", "image/bmp", ContentGroupEnum.Image, isWebImage : true),
+			new(".bmp", "image/bmp", ContentGroupEnum.Image, isWebImage: true),
 			new(".cmx", "image/x-cmx", ContentGroupEnum.Image),
 			new(".cod", "image/cis-cod", ContentGroupEnum.Image),
 			new(".gif", "image/gif", ContentGroupEnum.Image, isWebImage: true),
@@ -99,7 +99,7 @@
 			new(".webp", "image/webp", ContentGroupEnum.Image, isWebImage: true),
 			new(".xbm", "image/x-xbitmap", ContentGroupEnum.Image),
 			new(".xpm", "image/x-xpixmap", ContentGroupEnum.Image),
-			new(".xwd", "image/x-xwindowdump", ContentGroupEnum.Image),			
+			new(".xwd", "image/x-xwindowdump", ContentGroupEnum.Image),
 
 			// Text                            
 			new(".323", "text/h323", ContentGroupEnum.Text),
@@ -153,7 +153,7 @@
 			new(".ogv", "video/ogg", ContentGroupEnum.Video),
 			new(".qt", "video/quicktime", ContentGroupEnum.Video),
 			new(".webm", "video/webm", ContentGroupEnum.Video),
-		};
+		];
 
 	}
 

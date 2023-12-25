@@ -9,6 +9,8 @@ namespace Ans.Net8.Common
 	{
 
 		/*
+		 * string ReplaceIfEqual(this string source, string compared, string newest);
+		 * string ReplaceChars(this string source, string oldChars, char newChar);
 		 * string ReplaceKeysFromDict(this string source, Dictionary<string, string> dictionary, char marker = '#');
 		 * string ScreeningReg(this string source);
 		 * string ReScreeningReg(this string source);
@@ -27,11 +29,33 @@ namespace Ans.Net8.Common
 		 * string GetCrop(this string source, int startIndex, int length, string beginCropMask = null, string endCropMask = null);
 		 * string GetSafeText(this string source);
 		 * string GetTag(this string source, string before, string after, StringComparison comparisonType = StringComparison.InvariantCulture);
-		 * string GetTagAndCut(this string source, string before, string after, StringComparison comparisonType = StringComparison.InvariantCulture);
+		 * // string GetTagAndCut(this string source, string before, string after, StringComparison comparisonType = StringComparison.InvariantCulture);
 		 * string GetReplaceRecursively(this string source, string oldText, string newText);
 		 * string GetReplaceSpecChars(this string source);
 		 */
 
+
+		public static string ReplaceIfEqual(
+			this string source,
+			string compared,
+			string newest)
+		{
+			return (source == compared)
+				? newest
+				: source;
+		}
+
+
+		public static string ReplaceChars(
+			this string source,
+			string oldChars,
+			char newChar)
+		{
+			var s1 = source;
+			foreach (var item1 in oldChars)
+				s1 = s1.Replace(item1, newChar);
+			return s1;
+		}
 
 		public static string ReplaceKeysFromDict(
 			this string source,
@@ -336,6 +360,7 @@ namespace Ans.Net8.Common
 		}
 
 
+		/*
 		/// <summary>
 		/// Вырезает и возвращает из строки подстроку находящуюся между 'before' и 'after'
 		/// </summary>
@@ -358,10 +383,11 @@ namespace Ans.Net8.Common
 				: source.IndexOf(after, i2, comparisonType);
 			if (i3 < 0)
 				return string.Empty;
-			string s1 = source[i2..i3];
+			var s1 = source[i2..i3];
 			source = source[..i1] + source[(i3 + after.Length)..];
 			return s1;
 		}
+		*/
 
 
 		/// <summary>

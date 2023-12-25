@@ -3,27 +3,18 @@
 namespace Ans.Net8.Common
 {
 
-	public class ContentInfo
+	public class ContentInfo(
+		string extention,
+		string contentType,
+		ContentGroupEnum group,
+		bool isWebImage = false,
+		bool isJpeg = false)
 	{
-		public ContentInfo(
-			string extention,
-			string contentType,
-			ContentGroupEnum group,
-			bool isWebImage = false,
-			bool isJpeg = false)
-		{
-			Extention = extention;
-			ContentType = contentType;
-			Group = group;
-			IsWebImage = isWebImage;
-			IsJpeg = isJpeg;
-		}
-
-		public string Extention { get; private set; }
-		public string ContentType { get; private set; }
-		public ContentGroupEnum Group { get; private set; }
-		public bool IsWebImage { get; private set; }
-		public bool IsJpeg { get; private set; }
+		public string Extention { get; } = extention;
+		public string ContentType { get; } = contentType;
+		public ContentGroupEnum Group { get; } = group;
+		public bool IsWebImage { get; } = isWebImage;
+		public bool IsJpeg { get; } = isJpeg;
 
 		public MediaTypeHeaderValue MediaType
 			=> _mediaType ??= new MediaTypeHeaderValue(ContentType);

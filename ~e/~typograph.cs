@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Ans.Net8.Common
 {
@@ -188,12 +189,48 @@ namespace Ans.Net8.Common
 		}
 
 
+		[GeneratedRegex("[\\s]{2,}", RegexOptions.None)]
+		private static partial Regex _G_REGEX_MULTYSPACE();
+
+		[GeneratedRegex("([0..9.,_-]{1,3})", RegexOptions.None)]
+		private static partial Regex _G_REGEX_SMALLNUMBER();
+
+		public static string TypografFix(
+			this string source)
+		{
+			var s1 = _G_REGEX_MULTYSPACE().Replace(source, " ");
+			return s1
+				//.Replace("  ", " ")
+				.Replace(" г.", "&nbsp;г.")
+				//.Replace(" .", ".")
+				//.Replace(" ,", ",")
+				//.Replace(" :", ":")
+				//.Replace(" ;", ";")
+				.Replace(" - ", " —&nbsp;")
+				//.Replace(" -", "-")
+				//.Replace("- ", "-")
+				//.Replace("« ", "«")
+				//.Replace(" »", "»")
+				//.Replace("” ", "”")
+				//.Replace(" “", "“")
+				//.Replace("„ ", "„")
+				//.Replace("( ", "(")
+				//.Replace(" )", ")")
+				//.Replace("[ ", "[")
+				//.Replace(" ]", "]")
+				//.Replace(" …", "…")
+				;
+		}
+
+
 		public static string TypografMin(
 			this string source)
 		{
 			if (string.IsNullOrEmpty(source))
 				return string.Empty;
-			var a1 = source.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+			var a1 = source
+				.TypografFix()
+				.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 			var sb1 = new StringBuilder();
 			foreach (var w1 in a1.SkipLast(1))
 				if (w1.Length < 4)

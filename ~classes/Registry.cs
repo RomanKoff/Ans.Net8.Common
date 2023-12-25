@@ -5,10 +5,9 @@ namespace Ans.Net8.Common
 {
 
 	public delegate void RegistryItemEventHandler(object sender, RegistryItemEventArgs e);
-	public class RegistryItemEventArgs : EventArgs
+	public class RegistryItemEventArgs(RegistryItem item) : EventArgs
 	{
-		public RegistryItem Item { get; private set; }
-		public RegistryItemEventArgs(RegistryItem item) { Item = item; }
+		public RegistryItem Item { get; private set; } = item;
 	}
 
 
@@ -373,7 +372,7 @@ namespace Ans.Net8.Common
 			params string[] source)
 		{
 			Clear();
-			if (source?.Any() ?? false)
+			if (source?.Length > 0)
 			{
 				bool hasNull1 = false;
 				bool hasAll1 = false;

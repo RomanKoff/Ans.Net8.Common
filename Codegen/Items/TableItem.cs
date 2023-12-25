@@ -128,10 +128,10 @@ namespace Ans.Net8.Common.Codegen.Items
 		public FieldItem ManyrefField1 { get; private set; }
 		public FieldItem ManyrefField2 { get; private set; }
 
-		public List<TableItem> Slaves { get; private set; } = new();
-		public List<FieldItem> Fields { get; private set; } = new();
-		public List<ReferenceItem> ReferenceMasters { get; private set; } = new();
-		public List<ReferenceItem> ReferenceSlaves { get; private set; } = new();
+		public List<TableItem> Slaves { get; private set; } = [];
+		public List<FieldItem> Fields { get; private set; } = [];
+		public List<ReferenceItem> ReferenceMasters { get; private set; } = [];
+		public List<ReferenceItem> ReferenceSlaves { get; private set; } = [];
 		public CatalogItem Catalog { get; private set; }
 		public TableItem Master { get; private set; }
 
@@ -180,13 +180,13 @@ namespace Ans.Net8.Common.Codegen.Items
 			=> Master != null;
 
 		public bool HasSlave
-			=> Slaves.Any();
+			=> Slaves.Count > 0;
 
 		public bool HasReferenceMasters
-			=> ReferenceMasters.Any();
+			=> ReferenceMasters.Count > 0;
 
 		public bool HasReferenceSlaves
-			=> ReferenceSlaves.Any();
+			=> ReferenceSlaves.Count > 0;
 
 		public bool HasNavigations
 			=> HasMaster || HasSlave || HasReferenceMasters || HasReferenceSlaves;

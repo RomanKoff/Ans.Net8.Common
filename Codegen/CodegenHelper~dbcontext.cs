@@ -132,14 +132,14 @@ namespace {DalNamespace}
 			var sb1 = new StringBuilder();
 			foreach (var item1 in AllTables)
 			{
-			//	foreach (var item2 in item1.DefaultCSharpFields)
-			//	{
-			//		sb1.Append(@$"
+				//	foreach (var item2 in item1.DefaultCSharpFields)
+				//	{
+				//		sb1.Append(@$"
 
-			//modelBuilder.Entity<{item1.Name}>()
-			//	.Property(x => x.{item2.Name})
-			//	.HasDefaultValue({item2.DefaultCSharp});");
-			//	}
+				//modelBuilder.Entity<{item1.Name}>()
+				//	.Property(x => x.{item2.Name})
+				//	.HasDefaultValue({item2.DefaultCSharp});");
+				//	}
 				foreach (var item2 in item1.DefaultSqlFields)
 				{
 					sb1.Append(@$"

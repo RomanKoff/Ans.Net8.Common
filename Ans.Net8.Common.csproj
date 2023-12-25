@@ -10,6 +10,7 @@
 		<Description>rev. 1</Description>
 		<Authors>Roman Koff</Authors>
 		<Copyright>$(Authors)</Copyright>
+		<NeutralLanguage>ru</NeutralLanguage>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -64,7 +65,7 @@
 		<None Update="Ans.Net8.Common.Codegen.xsd">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="_update_ans.net8.common.cmd">
+		<None Update="_update_Ans.Net8.Common.cmd">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>

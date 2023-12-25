@@ -60,9 +60,9 @@ namespace Ans.Net8.Common.Services
 			m1.From.Add(message.From ?? GetMailboxAddress(
 				_options.DefaultFromTitle, _options.DefaultFromAddress));
 			m1.To.Add(message.To);
-			if (message.Cc != null && message.Cc.Any())
+			if (message.Cc?.Length > 0)
 				m1.Cc.AddRange(message.Cc);
-			if (message.Bcc != null && message.Bcc.Any())
+			if (message.Bcc?.Length > 0)
 				m1.Bcc.AddRange(message.Bcc);
 			m1.Subject = message.Subject;
 			m1.Body = new TextPart(TextFormat.Html)

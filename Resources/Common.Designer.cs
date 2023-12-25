@@ -61,6 +61,24 @@ namespace Ans.Net8.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ;января;февраля;марта;апреля;мая;июня;июля;августа;сентября;октября;ноября;декабря.
+        /// </summary>
+        public static string Array_Months {
+            get {
+                return ResourceManager.GetString("Array_Months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ;янв;фев;мар;апр;мая;июн;июл;авг;сен;окт;ноя;дек.
+        /// </summary>
+        public static string Array_Months2 {
+            get {
+                return ResourceManager.GetString("Array_Months2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to d MMMM.
         /// </summary>
         public static string Format_Date_ForCurrentYear {

@@ -5,30 +5,18 @@ using System.Text.Json;
 namespace Ans.Net8.Common
 {
 
-	public class WebApiCachedHelper<T>
+	public class WebApiCachedHelper<T>(
+		HttpClient httpClient,
+		IMemoryCache cache,
+		string cacheKey,
+		MemoryCacheEntryOptions cacheOptions,
+		string baseUrl,
+		JsonSerializerOptions jsonOptions)
 		: IWebApiHelper<T>
 	{
 
-		private readonly WebApiHelper<T> _webApi;
-		private readonly IMemoryCache _memoryCache;
-
-
-		/* ctors */
-
-
-		public WebApiCachedHelper(
-			HttpClient httpClient,
-			IMemoryCache cache,
-			string cacheKey,
-			MemoryCacheEntryOptions cacheOptions,
-			string baseUrl,
-			JsonSerializerOptions jsonOptions)
-		{
-			_webApi = new WebApiHelper<T>(httpClient, baseUrl, jsonOptions);
-			_memoryCache = cache;
-			CacheKey = cacheKey;
-			CacheOptions = cacheOptions;
-		}
+		private readonly WebApiHelper<T> _webApi = new(httpClient, baseUrl, jsonOptions);
+		private readonly IMemoryCache _memoryCache = cache;
 
 
 		public WebApiCachedHelper(
@@ -88,8 +76,8 @@ namespace Ans.Net8.Common
 		/* properties */
 
 
-		public string CacheKey { get; set; }
-		public MemoryCacheEntryOptions CacheOptions { get; set; }
+		public string CacheKey { get; set; } = cacheKey;
+		public MemoryCacheEntryOptions CacheOptions { get; set; } = cacheOptions;
 
 		public string BaseUrl
 		{

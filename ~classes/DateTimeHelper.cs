@@ -79,6 +79,14 @@
 		}
 
 
+		public TensesEnum GetDayTenses(
+			DateOnly date)
+		{
+			return GetDayTenses(
+				date.GetDateTime());
+		}
+
+
 		/// <summary>
 		/// Возвращает дату (и время) события (для блога)
 		///	- будет в будущих годах
@@ -102,7 +110,7 @@
 		public string GetPassed(
 			DateTime datetime,
 			bool addTime,
-			bool useYesterdayTodayTomorrow = true)
+			bool useYesterdayTodayTomorrow)
 		{
 			if (!datetime.HasTime())
 				addTime = false;
@@ -143,6 +151,15 @@
 		}
 
 
+		public string GetPassed(
+			DateOnly date,
+			bool useYesterdayTodayTomorrow)
+		{
+			return GetPassed(
+				date.GetDateTime(), false, useYesterdayTodayTomorrow);
+		}
+
+
 		/// <summary>
 		/// Возвращает дату (и время) прошедшего события (для блогов)
 		/// </summary>
@@ -152,7 +169,7 @@
 		public string GetPassed(
 			DateTime? datetime,
 			bool addTime,
-			bool useYesterdayTodayTomorrow = true)
+			bool useYesterdayTodayTomorrow)
 		{
 			if (datetime == null)
 				return Resources.Common.Text_Never;
@@ -160,52 +177,13 @@
 		}
 
 
-		/// <summary>
-		/// Возвращает диапазон дат (для блога)
-		/// - одна или равные даты
-		/// - разные года
-		/// - разные месяцы года
-		/// - разные дни месяца
-		/// </summary>
-		/// <param name="date1">Первая дата</param>
-		/// <param name="date2">Вторая дата</param>
-		/// <param name="showCurrentYear">Отображать текущий год</param>
-		public string GetSpan(
-			DateTime date1,
-			DateTime? date2,
-			bool showCurrentYear = false)
+		public string GetPassed(
+			DateOnly? date,
+			bool addTime,
+			bool useYesterdayTodayTomorrow)
 		{
-			// одна или равные даты
-			if (date2 == null || date1.Date.Equals(date2.Value.Date))
-				return (showCurrentYear)
-					? date1.ToString(Resources.Common.Format_DateRange_Full)
-					: date1.ToString(Resources.Common.Format_DateRange_WithinYear);
-			DateTime d2 = date2.Value;
-			if (date1 > d2)
-				(date1, d2) = (d2, date1);
-			if (date1.Year != d2.Year)
-			{
-				// разные года
-				return string.Format("{0} – {1}",
-					date1.ToString(Resources.Common.Format_DateRange_Full),
-					d2.ToString(Resources.Common.Format_DateRange_Full));
-			}
-			if (date1.Month != d2.Month)
-			{
-				// разные месяцы года
-				return string.Format("{0} – {1}",
-					date1.ToString(Resources.Common.Format_DateRange_WithinYear),
-					(showCurrentYear)
-						? d2.ToString(Resources.Common.Format_DateRange_Full)
-						: d2.ToString(Resources.Common.Format_DateRange_WithinYear));
-			}
-			// разные дни месяца
-			return string.Format("{0}–{1}{2}",
-				date1.ToString(Resources.Common.Format_DateSpanOfMonth_First),
-				date2.Value.ToString(Resources.Common.Format_DateSpanOfMonth_Second),
-				(showCurrentYear)
-					? $", {date1.Year}"
-					: null);
+			return GetPassed(
+				date?.GetDateTime(), addTime, useYesterdayTodayTomorrow);
 		}
 
 	}

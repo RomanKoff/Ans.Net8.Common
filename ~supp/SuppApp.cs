@@ -45,7 +45,7 @@ namespace Ans.Net8.Common
 		{
 			return Assembly.GetCallingAssembly()
 				.GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-					.InformationalVersion;
+					.InformationalVersion.GetLeft(12);
 		}
 
 

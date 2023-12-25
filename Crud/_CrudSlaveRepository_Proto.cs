@@ -23,21 +23,12 @@ namespace Ans.Net8.Common.Crud
 
 
 
-	public abstract class _CrudSlaveRepository_Proto<TSlaveEntity>
-		: _CrudRepository_Base<TSlaveEntity>,
+	public abstract class _CrudSlaveRepository_Proto<TSlaveEntity>(
+		DbContext db)
+		: _CrudRepository_Base<TSlaveEntity>(db),
 		ICrudSlaveRepository<TSlaveEntity>
 		where TSlaveEntity : class, ISlaveEntity
 	{
-
-		/* ctor */
-
-
-		public _CrudSlaveRepository_Proto(
-			DbContext db)
-			: base(db)
-		{
-		}
-
 
 		/* functions */
 

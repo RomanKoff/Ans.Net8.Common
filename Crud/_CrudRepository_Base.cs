@@ -25,20 +25,17 @@ namespace Ans.Net8.Common.Crud
 
 
 
-	public class _CrudRepository_Base<TEntity>
+	public class _CrudRepository_Base<TEntity>(
+		DbContext db)
 		: ICrudRepository<TEntity>
 		where TEntity : class
 	{
 
-		/* ctor */
+		/* readonly properties */
 
 
-		public _CrudRepository_Base(
-			DbContext db)
-		{
-			DbContext = db;
-			DbSet = db.Set<TEntity>();
-		}
+		public DbContext DbContext { get; } = db;
+		public DbSet<TEntity> DbSet { get; } = db.Set<TEntity>();
 
 
 		/* properties */
@@ -46,13 +43,6 @@ namespace Ans.Net8.Common.Crud
 
 		public string DefaultOrder { get; set; }
 		public bool IsDefaultOrderDescending { get; set; }
-
-
-		/* readonly properties */
-
-
-		public DbContext DbContext { get; private set; }
-		public DbSet<TEntity> DbSet { get; private set; }
 
 
 		/* functions */

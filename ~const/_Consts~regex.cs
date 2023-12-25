@@ -22,6 +22,9 @@ namespace Ans.Net8.Common
 		public const string REGEX_FIO_RU = @"^[A-Za-zА-ЯЁа-яё-]{1,23}( [A-Za-zА-ЯЁа-яё-]{1,23})+$";
 
 
+		[GeneratedRegex("[\\s]{2,}", RegexOptions.None)]
+		public static partial Regex G_REGEX_MULTYSPACE();
+
 		[GeneratedRegex("[]^\\\\-]")]
 		public static partial Regex G_REGEX_ENCODE();
 

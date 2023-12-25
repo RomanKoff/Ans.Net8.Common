@@ -4,10 +4,13 @@ using System.Diagnostics;
 namespace Ans.Net8.Common
 {
 
-	public abstract class _MemoryCache_Proto<T>
+	public abstract class _MemoryCache_Proto<T>(
+		IMemoryCache cache,
+		string cacheKey,
+		MemoryCacheEntryOptions cacheOptions)
 	{
 
-		private readonly IMemoryCache _cache;
+		private readonly IMemoryCache _cache = cache;
 
 
 		/* abstracts */
@@ -16,18 +19,7 @@ namespace Ans.Net8.Common
 		public abstract T GetObject();
 
 
-		/* ctors */
-
-
-		public _MemoryCache_Proto(
-			IMemoryCache cache,
-			string cacheKey,
-			MemoryCacheEntryOptions cacheOptions)
-		{
-			_cache = cache;
-			CacheKey = cacheKey;
-			CacheOptions = cacheOptions;
-		}
+		/* ctor */
 
 
 		public _MemoryCache_Proto(
@@ -49,8 +41,8 @@ namespace Ans.Net8.Common
 		/* readonly properties */
 
 
-		public string CacheKey { get; private set; }
-		public MemoryCacheEntryOptions CacheOptions { get; private set; }
+		public string CacheKey { get; } = cacheKey;
+		public MemoryCacheEntryOptions CacheOptions { get; } = cacheOptions;
 
 
 		/* methods */

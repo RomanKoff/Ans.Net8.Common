@@ -89,7 +89,7 @@ namespace {DalNamespace}.Repositories
 		{
 			var sb1 = new StringBuilder();
 			var items = table.DefaultCSharpFields;
-			if (items?.Any() ?? false)
+			if (items?.Count() > 0)
 			{
 				sb1.Append(@"
 			{");

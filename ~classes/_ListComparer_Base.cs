@@ -114,8 +114,8 @@
 				from item1 in NewestList
 				where !ActualList.Any(x => EqualTest(x, item1))
 				select item1;
-			ForRestorationList = new List<T>();
-			ForAddingList = new List<T>();
+			ForRestorationList = [];
+			ForAddingList = [];
 			foreach (var item1 in missings1)
 				if (RemovedList.Any(x => EqualTest(x, item1)))
 					ForRestorationList.Add(item1);

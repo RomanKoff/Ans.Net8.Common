@@ -55,7 +55,7 @@ namespace {DalNamespace}
 		public static void Initialize(
 			{ContextName}DbContext context)
 		{{
-			if (context.{AllTables.First().NamePluralize}.Any())
+			if (context.{AllTables.First().NamePluralize}.Count() > 0)
 				return;
 			Debug.WriteLine(""[{DalNamespace}.{ContextName}DbInit] Initialize Db"");
 		}}

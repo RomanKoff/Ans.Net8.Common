@@ -1,203 +1,235 @@
-﻿using System.Text;
-
-namespace Ans.Net8.Common
+﻿namespace Ans.Net8.Common
 {
-
-	// TODO: Dictionary<string, string>.Make()
 
 	public static partial class _e
 	{
 
 		/*
-		 * string Make(this string value, string template, bool expression = true);
+		 * string Make(this string value, string template);
+		 * string Make(this string value, string template, params object[] addons);
 		 * string Make(this string value, string template, string nullValue);
-		 * string Make(this int value, string template, string format = null, int? nullValue = null);
+		 * 
+		 * string Make(this int value, string template, string format = null);
+		 * string Make(this int value, string template, string format, int nullValue);
 		 * string Make(this int? value, string template, string format = null);
-		 * string Make(this long value, string template, string format = null, long? nullValue = null);
+		 * 
+		 * string Make(this long value, string template, string format = null);
+		 * string Make(this long value, string template, string format, long nullValue);
 		 * string Make(this long? value, string template, string format = null);
-		 * string Make(this double value, string template, string format = null, double? nullValue = null);
+		 * 
+		 * string Make(this double value, string template, string format = null);
+		 * string Make(this double value, string template, string format, double nullValue);
 		 * string Make(this double? value, string template, string format = null);
-		 * string Make(this float value, string template, string format = null, float? nullValue = null);
+		 * 
+		 * string Make(this float value, string template, string format = null);
+		 * string Make(this float value, string template, string format, float nullValue);
 		 * string Make(this float? value, string template, string format = null);
-		 * string Make(this decimal value, string template, string format = null, decimal? nullValue = null);
+		 * 
+		 * string Make(this decimal value, string template, string format = null);
+		 * string Make(this decimal value, string template, string format, decimal nullValue);
 		 * string Make(this decimal? value, string template, string format = null);
+		 * 
 		 * string Make(this DateTime value, string template, string format = null);
-		 * string Make(this DateTime? value, string template, string format = null, string emptyText = null);
+		 * string Make(this DateTime value, string template, string format, DateTime nullValue);
+		 * string Make(this DateTime? value, string template, string format = null);
+		 * 
 		 * string Make(this DateOnly value, string template, string format = null);
-		 * string Make(this DateOnly? value, string template, string format = null, string emptyText = null);
+		 * string Make(this DateOnly value, string template, string format, DateOnly nullValue);
+		 * string Make(this DateOnly? value, string template, string format = null);
+		 * 
 		 * string Make(this TimeOnly value, string template, string format = null);
-		 * string Make(this TimeOnly? value, string template, string format = null, string emptyText = null);
+		 * string Make(this TimeOnly value, string template, string format, TimeOnly nullValue);
+		 * string Make(this TimeOnly? value, string template, string format = null);
+		 * 
 		 * string Make(this bool value, string trueText, string falseText = null);
+		 * string Make(this bool value, string template, params object[] args);
 		 * 
-		 * string MakeIf(this bool expression, string template, params object[] args);
-		 * string MakeUseAddons(this string value, string template, params object[] addons);
 		 * string MakeRepeats(this string value, int count, string resultTemplate = null, string itemTemplate = null, string itemsSeparator = null);
-		 * string MakeFromCollection<T>(this IEnumerable<T> items, Func<T, string> itemExtractor, string resultTemplate, string itemTemplate, string itemsSeparator);
-		 * string MakeFromCollection(this IEnumerable<string> items, string resultTemplate, string itemTemplate, string itemsSeparator);
-		 * string MakeList(this string list, string resultTemplate, string itemTemplate, string itemsSeparator);
-		 * string MakeUrl(this string url, string template);
 		 * 
-		 * string Make_Passed(this DateTime datetime, DateTimeHelper calc, bool addTime, bool useYesterdayTodayTomorrow = true);
+		 * string MakeFromCollection(this IEnumerable<string> items, string resultTemplate, string itemTemplate, string itemsSeparator);
+		 * string MakeFromCollection<T>(this IEnumerable<T> items, Func<T, string> itemExtractor, string resultTemplate, string itemTemplate, string itemsSeparator);
+		 * 
+		 * string MakeOverDict<T>(this string key, DictHelper<T> dict, Func<T, string> func, string template);
+		 * string MakeOverDict(this string key, DictHelper<string> dict, string template);
+		 * 
+		 * string Make_UrlWrapper(this string url, string template);
+		 * 
+		 * string Make_Passed(this DateTime datetime, DateTimeHelper calc, bool addTime, bool useYesterdayTodayTomorrow);
 		 * string Make_Passed(this DateTime? datetime, DateTimeHelper calc, bool addTime, bool useYesterdayTodayTomorrow = true);
-		 * string Make_Span(this DateTime date1, DateTime? date2, DateTimeHelper calc, bool showCurrentYear = false);
-		 * string Make_SizeOfKB(this long size);
-		 * string Make_SizeOfKB(this int size);
+		 * string Make_Passed(this DateOnly date, DateTimeHelper calc, bool useYesterdayTodayTomorrow);
+		 * string Make_Passed(this DateOnly? date, DateTimeHelper calc, bool useYesterdayTodayTomorrow = true);
+		 * 
+		 * string Make_Span(this DateTime datetime1, DateTime? datetime2, bool showCurrentYear = false);
+		 * string Make_Span(this DateOnly date1, DateOnly? date2, bool showCurrentYear = false);
+		 * 
 		 * string Make_UniDate(this DateTime value);
 		 * string Make_SpecDate(this DateTime value);
+		 * string Make_SpecDate(this DateTime value);
+		 * 
+		 * string Make_SizeOfKB(this int size);
+		 * string Make_SizeOfKB(this long size);
 		 */
 
 
 		public static string Make(
 			this string value,
-			string template,
-			bool expression = true)
+			string template)
 		{
-			return (!expression || string.IsNullOrEmpty(value))
-				? string.Empty
-				: string.IsNullOrEmpty(template)
-					? value
-					: string.Format(template, value);
+			return string.IsNullOrEmpty(value)
+				? null : string.IsNullOrEmpty(template)
+					? value : string.Format(template, value);
 		}
-
-
+		public static string Make(
+			this string value,
+			string template,
+			params object[] addons)
+		{
+			return string.IsNullOrEmpty(value)
+				? null : string.IsNullOrEmpty(template)
+					? value : string.Format(template, addons.Insert(0, value));
+		}
 		public static string Make(
 			this string value,
 			string template,
 			string nullValue)
 		{
 			return value == nullValue
-				? string.Empty
-				: string.Format(template, value);
+				? null : string.Format(template, value);
 		}
 
 
 		public static string Make(
 			this int value,
 			string template,
-			string format = null,
-			int? nullValue = null)
+			string format = null)
 		{
-			return nullValue != null && value == nullValue
-				? string.Empty
-				: (string.IsNullOrEmpty(format)
-					? value.ToString()
-					: value.ToString(format))
-						.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this int value,
+			string template,
+			string format,
+			int nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this int? value,
 			string template,
 			string format = null)
 		{
-			return value == null
-				? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
 		public static string Make(
 			this long value,
 			string template,
-			string format = null,
-			long? nullValue = null)
+			string format = null)
 		{
-			return nullValue != null && value == nullValue
-				? string.Empty
-				: (string.IsNullOrEmpty(format)
-					? value.ToString()
-					: value.ToString(format))
-						.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this long value,
+			string template,
+			string format,
+			long nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this long? value,
 			string template,
 			string format = null)
 		{
-			return value == null
-				? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
 		public static string Make(
 			this double value,
 			string template,
-			string format = null,
-			double? nullValue = null)
+			string format = null)
 		{
-			return nullValue != null && value == nullValue
-				? string.Empty
-				: (string.IsNullOrEmpty(format)
-					? value.ToString()
-					: value.ToString(format))
-						.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this double value,
+			string template,
+			string format,
+			double nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this double? value,
 			string template,
 			string format = null)
 		{
-			return value == null
-				? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
 		public static string Make(
 			this float value,
 			string template,
-			string format = null,
-			float? nullValue = null)
+			string format = null)
 		{
-			return nullValue != null && value == nullValue
-				? string.Empty
-				: (string.IsNullOrEmpty(format)
-					? value.ToString()
-					: value.ToString(format))
-						.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this float value,
+			string template,
+			string format,
+			float nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this float? value,
 			string template,
 			string format = null)
 		{
-			return value == null
-				? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
 		public static string Make(
 			this decimal value,
 			string template,
-			string format = null,
-			decimal? nullValue = null)
+			string format = null)
 		{
-			return nullValue != null && value == nullValue
-				? string.Empty
-				: (string.IsNullOrEmpty(format)
-					? value.ToString()
-					: value.ToString(format))
-						.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this decimal value,
+			string template,
+			string format,
+			decimal nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this decimal? value,
 			string template,
 			string format = null)
 		{
-			return value == null
-				? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
@@ -206,22 +238,25 @@ namespace Ans.Net8.Common
 			string template,
 			string format = null)
 		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString("d")
-				: value.ToString(format))
-					.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this DateTime value,
+			string template,
+			string format,
+			DateTime nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this DateTime? value,
 			string template,
-			string format = null,
-			string emptyText = null)
+			string format = null)
 		{
-			return value == null
-				? emptyText ?? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
@@ -230,22 +265,25 @@ namespace Ans.Net8.Common
 			string template,
 			string format = null)
 		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString("d")
-				: value.ToString(format))
-					.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this DateOnly value,
+			string template,
+			string format,
+			DateOnly nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this DateOnly? value,
 			string template,
-			string format = null,
-			string emptyText = null)
+			string format = null)
 		{
-			return value == null
-				? emptyText ?? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
@@ -254,22 +292,25 @@ namespace Ans.Net8.Common
 			string template,
 			string format = null)
 		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString("d")
-				: value.ToString(format))
-					.Make(template);
+			return string.IsNullOrEmpty(format)
+				? value.ToString()
+				: value.ToString(format).Make(template);
 		}
-
-
+		public static string Make(
+			this TimeOnly value,
+			string template,
+			string format,
+			TimeOnly nullValue)
+		{
+			return value == nullValue
+				? null : value.Make(template, format);
+		}
 		public static string Make(
 			this TimeOnly? value,
 			string template,
-			string format = null,
-			string emptyText = null)
+			string format = null)
 		{
-			return value == null
-				? emptyText ?? string.Empty
-				: value.Value.Make(template, format);
+			return value?.Make(format, template);
 		}
 
 
@@ -278,33 +319,16 @@ namespace Ans.Net8.Common
 			string trueText,
 			string falseText = null)
 		{
-			if (value)
-				return trueText;
-			return falseText ?? string.Empty;
+			return value
+				? trueText : falseText;
 		}
-
-
-		public static string MakeIf(
-			this bool expression,
+		public static string Make(
+			this bool value,
 			string template,
 			params object[] args)
 		{
-			if (expression)
-				return string.Format(template, args);
-			return string.Empty;
-		}
-
-
-		public static string MakeUseAddons(
-			this string value,
-			string template,
-			params object[] addons)
-		{
-			if (string.IsNullOrEmpty(value))
-				return string.Empty;
-			return string.IsNullOrEmpty(template)
-				? value
-				: string.Format(template, addons.Insert(0, value));
+			return value
+				? string.Format(template, args) : null;
 		}
 
 
@@ -316,51 +340,11 @@ namespace Ans.Net8.Common
 			string itemsSeparator = null)
 		{
 			if (string.IsNullOrEmpty(value) || count < 1)
-				return string.Empty;
-			string s1 = value.Make(itemTemplate);
-			var sb1 = new StringBuilder();
-			bool f1 = !string.IsNullOrEmpty(itemsSeparator);
-			bool f2 = false;
-			for (int i1 = 0; i1 < count; i1++)
-			{
-				if (f1)
-				{
-					if (f2)
-						sb1.Append(itemsSeparator);
-					else
-						f2 = true;
-				}
-				sb1.Append(s1);
-			}
-			return sb1.ToString().Make(resultTemplate);
-		}
-
-
-		public static string MakeFromCollection<T>(
-			this IEnumerable<T> items,
-			Func<T, string> itemExtractor,
-			string resultTemplate,
-			string itemTemplate,
-			string itemsSeparator)
-		{
-			if (items == null || !items.Any())
-				return string.Empty;
-			var sb1 = new StringBuilder();
-			bool f1 = !string.IsNullOrEmpty(itemsSeparator);
-			bool f2 = false;
-			string s1 = itemTemplate ?? "{0}";
-			foreach (var item in items)
-			{
-				if (f1)
-				{
-					if (f2)
-						sb1.Append(itemsSeparator);
-					else
-						f2 = true;
-				}
-				sb1.AppendFormat(s1, itemExtractor(item));
-			}
-			return sb1.ToString().Make(resultTemplate);
+				return null;
+			var s1 = value.Make(itemTemplate);
+			var a1 = Enumerable.Repeat(s1, count);
+			return string.Join(itemsSeparator, a1)
+				.Make(resultTemplate);
 		}
 
 
@@ -370,35 +354,51 @@ namespace Ans.Net8.Common
 			string itemTemplate,
 			string itemsSeparator)
 		{
-			return items.MakeFromCollection(
-				x => x,
-				resultTemplate,
-				itemTemplate,
-				itemsSeparator);
+			if (!(items?.Count() > 0))
+				return null;
+			Func<string, string> func1 = string.IsNullOrEmpty(itemTemplate)
+				? x => x : x => x.Make(itemTemplate);
+			var a1 = items.Select(func1);
+			return string.Join(itemsSeparator, a1)
+				.Make(resultTemplate);
 		}
-
-
-		public static string MakeList(
-			this string list,
+		public static string MakeFromCollection<T>(
+			this IEnumerable<T> items,
+			Func<T, string> itemExtractor,
 			string resultTemplate,
 			string itemTemplate,
 			string itemsSeparator)
 		{
-			return list.Split(_Consts.SPLIT_ITEMS)
-				.MakeFromCollection(
-					x => x,
-					resultTemplate,
-					itemTemplate,
-					itemsSeparator);
+			return MakeFromCollection(
+				items.Select(itemExtractor), resultTemplate, itemTemplate, itemsSeparator);
 		}
 
 
-		public static string MakeUrl(
+		public static string MakeOverDict<T>(
+			this string key,
+			DictHelper<T> dict,
+			Func<T, string> func,
+			string template)
+		{
+			return string.IsNullOrEmpty(key)
+				? null : dict.GetPropertyOrKey(key, func).Make(template);
+		}
+		public static string MakeOverDict(
+			this string key,
+			DictHelper<string> dict,
+			string template)
+		{
+			return MakeOverDict(
+				key, dict, x => x, template);
+		}
+
+
+		public static string Make_UrlWrapper(
 			this string url,
 			string template)
 		{
 			if (string.IsNullOrEmpty(url))
-				return string.Empty;
+				return null;
 			if (url[0] == '/'
 				|| url.StartsWith("https://")
 				|| url.StartsWith("http://"))
@@ -411,13 +411,11 @@ namespace Ans.Net8.Common
 			this DateTime datetime,
 			DateTimeHelper calc,
 			bool addTime,
-			bool useYesterdayTodayTomorrow = true)
+			bool useYesterdayTodayTomorrow)
 		{
 			return calc.GetPassed(
 				datetime, addTime, useYesterdayTodayTomorrow);
 		}
-
-
 		public static string Make_Passed(
 			this DateTime? datetime,
 			DateTimeHelper calc,
@@ -429,28 +427,39 @@ namespace Ans.Net8.Common
 		}
 
 
-		public static string Make_Span(
-			this DateTime date1,
-			DateTime? date2,
+		public static string Make_Passed(
+			this DateOnly date,
 			DateTimeHelper calc,
+			bool useYesterdayTodayTomorrow)
+		{
+			return calc.GetPassed(
+				date, false, useYesterdayTodayTomorrow);
+		}
+		public static string Make_Passed(
+			this DateOnly? date,
+			DateTimeHelper calc,
+			bool useYesterdayTodayTomorrow = true)
+		{
+			return calc.GetPassed(
+				date, false, useYesterdayTodayTomorrow);
+		}
+
+
+		public static string Make_Span(
+			this DateTime datetime1,
+			DateTime? datetime2,
 			bool showCurrentYear = false)
 		{
-			return calc.GetSpan(
+			return SuppDateTime.GetSpan(
+				datetime1, datetime2, showCurrentYear);
+		}
+		public static string Make_Span(
+			this DateOnly date1,
+			DateOnly? date2,
+			bool showCurrentYear = false)
+		{
+			return SuppDateTime.GetSpan(
 				date1, date2, showCurrentYear);
-		}
-
-
-		public static string Make_SizeOfKB(
-			this long size)
-		{
-			return SuppIO.GetSizeOfKB(size);
-		}
-
-
-		public static string Make_SizeOfKB(
-			this int size)
-		{
-			return ((long)size).Make_SizeOfKB();
 		}
 
 
@@ -459,12 +468,26 @@ namespace Ans.Net8.Common
 		{
 			return value.ToString("yyyy-MM-dd");
 		}
-
 		public static string Make_SpecDate(
 			this DateTime value)
 		{
 			return value.ToString("yyyy-0MM-dd");
 		}
+
+
+		public static string Make_SizeOfKB(
+			this int size)
+		{
+			return ((long)size).Make_SizeOfKB();
+		}
+		public static string Make_SizeOfKB(
+			this long size)
+		{
+			return SuppIO.GetSizeOfKB(size);
+		}
+
+
+
 
 
 		/*
@@ -477,8 +500,7 @@ namespace Ans.Net8.Common
 			if (string.IsNullOrEmpty(value) || value == nullValue)
 				return res_Common.Text_NullItem;
 			return SuppMake.MakeFromRegistry(value, registry, template);
-		}		
-
+		}
 		public static string MakeFromRegistry(
 			string value,
 			Registry registry,

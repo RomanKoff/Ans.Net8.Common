@@ -19,7 +19,7 @@ namespace Ans.Net8.Common.Codegen
 	Current.Page.Title = ""{table.HeaderPl}"";
 }}
 <a class=""btn btn-primary"" asp-action=""Add"">Создать</a>
-@if (Model?.Any() ?? false)
+@if (Model?.Count() > 0)
 {{
 	<table class=""table table-hovered"">
 		@foreach (var item1 in Model)

@@ -44,7 +44,7 @@ namespace Ans.Net8.Common
 
 		private void _parse()
 		{
-			var type0 = typeof(System.Object);
+			var type0 = typeof(object);
 			Ctors = InfoType.GetConstructors().Select(x => new InfoMethod
 			{
 				Name = x.Name,
@@ -53,10 +53,10 @@ namespace Ans.Net8.Common
 			var methods1 = InfoType.GetMethods()
 				.Where(x => x.DeclaringType != type0)
 				.OrderBy(x => x.Name);
-			List<MethodInfo> getter1 = new();
-			List<MethodInfo> setter1 = new();
-			List<MethodInfo> funcs1 = new();
-			List<MethodInfo> meths1 = new();
+			List<MethodInfo> getter1 = [];
+			List<MethodInfo> setter1 = [];
+			List<MethodInfo> funcs1 = [];
+			List<MethodInfo> meths1 = [];
 			foreach (var item1 in methods1)
 				if (item1.Name.StartsWith("get_"))
 					getter1.Add(item1);

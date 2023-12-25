@@ -26,7 +26,7 @@ namespace Ans.Net8.Common.Codegen.Items
 		public string Title { get; private set; }
 		public string Remark { get; private set; }
 
-		public List<TableItem> AllTables { get; private set; } = new();
+		public List<TableItem> AllTables { get; private set; } = [];
 
 		public IEnumerable<TableItem> TopTables
 			=> AllTables.Where(x => x.Level == 0);
