@@ -74,7 +74,7 @@
 		public DateTime? GetDateTime(
 			int index)
 		{
-			return SuppDateTime.GetDateTime(Get(index));
+			return Get(index).ToDateTime();
 		}
 		public DateTime GetDateTime(
 			int index,
@@ -93,7 +93,7 @@
 		public DateOnly? GetDateOnly(
 			int index)
 		{
-			return SuppDateTime.GetDateOnly(Get(index));
+			return Get(index).ToDateOnly();
 		}
 		public DateOnly GetDateOnly(
 			int index,
@@ -112,7 +112,7 @@
 		public TimeOnly? GetTimeOnly(
 			int index)
 		{
-			return SuppDateTime.GetTimeOnly(Get(index));
+			return Get(index).ToTimeOnly();
 		}
 		public TimeOnly GetTimeOnly(
 			int index,

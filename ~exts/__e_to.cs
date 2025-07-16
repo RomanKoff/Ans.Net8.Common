@@ -173,6 +173,51 @@
 				|| value == "TRUE";
 		}
 
+
+		public static DateTime? ToDateTime(
+			 this string value)
+		{
+			if (DateTime.TryParse(value, out DateTime v1))
+				return v1;
+			return null;
+		}
+		public static DateTime ToDateTime(
+			this string value,
+			DateTime defaultValue)
+		{
+			return value.ToDateTime() ?? defaultValue;
+		}
+
+
+		public static DateOnly? ToDateOnly(
+			this string value)
+		{
+			if (DateOnly.TryParse(value, out DateOnly v1))
+				return v1;
+			return null;
+		}
+		public static DateOnly ToDateOnly(
+			this string value,
+			DateOnly defaultValue)
+		{
+			return value.ToDateOnly() ?? defaultValue;
+		}
+
+
+		public static TimeOnly? ToTimeOnly(
+			this string value)
+		{
+			if (TimeOnly.TryParse(value, out TimeOnly v1))
+				return v1;
+			return null;
+		}
+		public static TimeOnly ToTimeOnly(
+			this string value,
+			TimeOnly defaultValue)
+		{
+			return value.ToTimeOnly() ?? defaultValue;
+		}
+
 	}
 
 }

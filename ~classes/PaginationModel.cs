@@ -7,6 +7,11 @@
 		/* ctor */
 
 
+		public PaginationModel()
+		{
+		}
+
+
 		public PaginationModel(
 			PaginationHelper source)
 		{

@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Ans.Net8.Common
 {
@@ -131,6 +132,19 @@ namespace Ans.Net8.Common
 				sb1.Append(
 					(char1 < 32) ? ' ' : char1);
 			return sb1.ToString();
+		}
+
+
+		public static string GetSafeNumberString(
+			string source)
+		{
+			if (string.IsNullOrEmpty(source))
+				return null;
+			var s1 = SuppLangRu.GetTranslitRuToEn(source.ToLower());
+			return s1
+				.ReplaceByChars("-", "^0-9a-z")
+				.Replace("--", "-")
+				.Trim('-');
 		}
 
 

@@ -82,10 +82,10 @@
 			bool showCurrentYear)
 		{
 			var a1 = span.SplitFix("|", 2);
-			var d1 = GetDateTime(a1[0]);
+			var d1 = a1[0].ToDateTime();
 			if (d1 == null)
 				return null;
-			var d2 = GetDateTime(a1[1]);
+			var d2 = a1[1].ToDateTime();
 			return GetSpan(d1.Value, d2, showCurrentYear);
 		}
 
@@ -173,51 +173,6 @@
 			if (value2 == null)
 				return value1;
 			return (value1 < value2) ? value1 : value2.Value;
-		}
-
-
-		public static DateTime? GetDateTime(
-			string value)
-		{
-			if (DateTime.TryParse(value, out DateTime v1))
-				return v1;
-			return null;
-		}
-		public static DateTime GetDateTime(
-			string value,
-			DateTime defaultValue)
-		{
-			return GetDateTime(value) ?? defaultValue;
-		}
-
-
-		public static DateOnly? GetDateOnly(
-			string value)
-		{
-			if (DateOnly.TryParse(value, out DateOnly v1))
-				return v1;
-			return null;
-		}
-		public static DateOnly GetDateOnly(
-			string value,
-			DateOnly defaultValue)
-		{
-			return GetDateOnly(value) ?? defaultValue;
-		}
-
-
-		public static TimeOnly? GetTimeOnly(
-			string value)
-		{
-			if (TimeOnly.TryParse(value, out TimeOnly v1))
-				return v1;
-			return null;
-		}
-		public static TimeOnly GetTimeOnly(
-			string value,
-			TimeOnly defaultValue)
-		{
-			return GetTimeOnly(value) ?? defaultValue;
 		}
 
 

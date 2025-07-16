@@ -35,8 +35,6 @@
 			return dictionary.TryGetValue(key, out object value1)
 				 ? value1?.ToString() : defaultValue;
 		}
-
-
 		public static string GetString(
 			this IDictionary<int, string> dictionary,
 			int key,
@@ -55,8 +53,6 @@
 			return dictionary.TryGetValue(key, out object value1)
 				? value1.ToString().ToInt(defaultValue) : defaultValue;
 		}
-
-
 		public static int GetInt(
 			this IDictionary<int, object> dictionary,
 			int key,
@@ -70,17 +66,15 @@
 		public static bool GetBool(
 			this IDictionary<string, object> dictionary,
 			string key,
-			bool defaultValue)
+			bool defaultValue = false)
 		{
 			return dictionary.TryGetValue(key, out object value1)
 				? value1.ToString().ToBool() : defaultValue;
 		}
-
-
 		public static bool GetBool(
 			this IDictionary<int, object> dictionary,
 			int key,
-			bool defaultValue)
+			bool defaultValue = false)
 		{
 			return dictionary.TryGetValue(key, out object value1)
 				? value1.ToString().ToBool() : defaultValue;

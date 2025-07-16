@@ -89,13 +89,15 @@ namespace Ans.Net8.Common
 		}
 
 
-		public static string GetTypografMin(
+		public static string GetTypografElem(
 			string value)
 		{
 			if (string.IsNullOrEmpty(value))
-				return string.Empty;
-			var a1 = GetTypografFix(value)
-				.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+				return null;
+			var value1 = GetTypografFix(value);
+			if (string.IsNullOrEmpty(value1) || value1 == " ")
+				return null;
+			var a1 = value1.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 			if (a1.Length == 1)
 				return a1[0];
 			var sb1 = new StringBuilder();
@@ -109,6 +111,17 @@ namespace Ans.Net8.Common
 			if (last1.Length < 4 && s1[^1] == ' ')
 				return $"{s1[..^1]}&nbsp;{last1}";
 			return $"{s1}{last1}";
+		}
+
+
+		public static string GetTypografMin(
+			string value)
+		{
+			if (string.IsNullOrEmpty(value))
+				return null;
+			var sb1 = new StringBuilder();
+			sb1.Append(value);
+			return sb1.ToString();
 		}
 
 
