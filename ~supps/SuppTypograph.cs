@@ -97,6 +97,8 @@ namespace Ans.Net8.Common
 			var value1 = GetTypografFix(value);
 			if (string.IsNullOrEmpty(value1) || value1 == " ")
 				return null;
+			var f1 = value1.StartsWith(' ');
+			var f2 = value1.Length > 1 && value1.EndsWith(' ');
 			var a1 = value1.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 			if (a1.Length == 1)
 				return a1[0];
@@ -108,9 +110,10 @@ namespace Ans.Net8.Common
 			}
 			var s1 = sb1.ToString();
 			var last1 = a1.Last();
-			if (last1.Length < 4 && s1[^1] == ' ')
-				return $"{s1[..^1]}&nbsp;{last1}";
-			return $"{s1}{last1}";
+			var s2 = (last1.Length < 4 && s1[^1] == ' ')
+				? $"{s1[..^1]}&nbsp;{last1}"
+				: $"{s1}{last1}";
+			return $"{f1.Make(" ")}{s2}{f2.Make(" ")}";
 		}
 
 
@@ -119,9 +122,8 @@ namespace Ans.Net8.Common
 		{
 			if (string.IsNullOrEmpty(value))
 				return null;
-			var sb1 = new StringBuilder();
-			sb1.Append(value);
-			return sb1.ToString();
+			var helper1 = new TypografHelper(value);
+			return helper1.Result;
 		}
 
 
