@@ -449,14 +449,16 @@ namespace Ans.Net8.Common
 		{
 			return GetProposeWidth() switch
 			{
-				WidthEnum.Full => RegistryModeEnum.Select,
-				WidthEnum.Large => _items.Count < 10
+				WidthEnum.Full => _items.Count < 10
 					? RegistryModeEnum.Inputs
 					: RegistryModeEnum.Select,
-				WidthEnum.Medium => _items.Count < 15
+				WidthEnum.Large => _items.Count < 20
 					? RegistryModeEnum.Inputs
 					: RegistryModeEnum.Select,
-				_ => _items.Count < 20
+				WidthEnum.Medium => _items.Count < 30
+					? RegistryModeEnum.Inputs
+					: RegistryModeEnum.Select,
+				_ => _items.Count < 40
 					? RegistryModeEnum.Inputs
 					: RegistryModeEnum.Select
 			};
@@ -473,8 +475,8 @@ namespace Ans.Net8.Common
 			return width switch
 			{
 				< 11 => WidthEnum.Small,
-				< 31 => WidthEnum.Medium,
-				< 61 => WidthEnum.Large,
+				< 41 => WidthEnum.Medium,
+				< 101 => WidthEnum.Large,
 				_ => WidthEnum.Full,
 			};
 		}
