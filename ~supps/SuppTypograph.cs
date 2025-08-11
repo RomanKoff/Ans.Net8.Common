@@ -47,6 +47,7 @@ namespace Ans.Net8.Common
 			return value?.ReplaceFromDict(_DICT_HTML2TEXT);
 		}
 
+
 		private static readonly Dictionary<string, string> _DICT_TEXT2HTML = new()
 		{
 			{ "&amp;", "&" },

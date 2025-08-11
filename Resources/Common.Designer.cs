@@ -223,6 +223,15 @@ namespace Ans.Net8.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1=янв;2=фев;3=мар;4=апр;5=май;6=июн;7=июл;8=авг;9=сен;10=окт;11=ноя;12=дек;0=нет.
+        /// </summary>
+        public static string Registry_Months2 {
+            get {
+                return ResourceManager.GetString("Registry_Months2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Создано: {0}.
         /// </summary>
         public static string Template_DataCreate {

@@ -137,7 +137,7 @@ namespace Ans.Net8.Common
 			return type1 switch
 			{
 				"System.DateTime"
-					=> ((DateTime)value).ToString("yyyy-MM-ddTHH\\:mm\\:ss.fffK"),
+					=> ((DateTime)value).ToString("u"),
 				"System.DateOnly"
 					=> ((DateOnly)value).ToString("yyyy-MM-dd"),
 				"System.TimeOnly"

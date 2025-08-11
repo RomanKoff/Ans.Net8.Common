@@ -42,21 +42,22 @@
 		public static string Make(
 			this int value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this int value,
-			string template,
 			string format,
 			int nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this int value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, 0);
 		}
 		public static string Make(
 			this int? value,
@@ -73,21 +74,22 @@
 		public static string Make(
 			this long value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this long value,
-			string template,
 			string format,
 			long nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this long value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, 0);
 		}
 		public static string Make(
 			this long? value,
@@ -104,21 +106,22 @@
 		public static string Make(
 			this double value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this double value,
-			string template,
 			string format,
 			double nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this double value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, 0);
 		}
 		public static string Make(
 			this double? value,
@@ -135,21 +138,22 @@
 		public static string Make(
 			this float value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this float value,
-			string template,
 			string format,
 			float nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this float value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, 0);
 		}
 		public static string Make(
 			this float? value,
@@ -166,21 +170,22 @@
 		public static string Make(
 			this decimal value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this decimal value,
-			string template,
 			string format,
 			decimal nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this decimal value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, 0);
 		}
 		public static string Make(
 			this decimal? value,
@@ -197,21 +202,22 @@
 		public static string Make(
 			this DateTime value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this DateTime value,
-			string template,
 			string format,
 			DateTime nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this DateTime value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, DateTime.MinValue);
 		}
 		public static string Make(
 			this DateTime? value,
@@ -228,21 +234,22 @@
 		public static string Make(
 			this DateOnly value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this DateOnly value,
-			string template,
 			string format,
 			DateOnly nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this DateOnly value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, DateOnly.MinValue);
 		}
 		public static string Make(
 			this DateOnly? value,
@@ -259,21 +266,22 @@
 		public static string Make(
 			this TimeOnly value,
 			string template,
-			string format = null)
-		{
-			return (string.IsNullOrEmpty(format)
-				? value.ToString()
-				: value.ToString(format))
-					.Make(template);
-		}
-		public static string Make(
-			this TimeOnly value,
-			string template,
 			string format,
 			TimeOnly nullValue)
 		{
 			return value == nullValue
-				? null : value.Make(template, format);
+				? null
+				: (string.IsNullOrEmpty(format)
+					? value.ToString()
+					: value.ToString(format))
+						.Make(template);
+		}
+		public static string Make(
+			this TimeOnly value,
+			string template,
+			string format = null)
+		{
+			return value.Make(template, format, TimeOnly.MinValue);
 		}
 		public static string Make(
 			this TimeOnly? value,
