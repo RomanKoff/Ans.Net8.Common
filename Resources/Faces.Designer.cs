@@ -277,6 +277,15 @@ namespace Ans.Net8.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Логин.
+        /// </summary>
+        public static string IdUsername {
+            get {
+                return ResourceManager.GetString("IdUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дополнительная информация.
         /// </summary>
         public static string Info {
@@ -426,6 +435,15 @@ namespace Ans.Net8.Common.Resources {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Уникальный идентификатор.
+        /// </summary>
+        public static string NameIdentifier {
+            get {
+                return ResourceManager.GetString("NameIdentifier", resourceCulture);
             }
         }
         

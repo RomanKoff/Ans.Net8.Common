@@ -189,6 +189,9 @@
   <data name="Id" xml:space="preserve">
     <value>Ключ</value>
   </data>
+  <data name="IdUsername" xml:space="preserve">
+    <value>Логин</value>
+  </data>
   <data name="Info" xml:space="preserve">
     <value>Дополнительная информация</value>
   </data>
@@ -239,6 +242,9 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
+  </data>
+  <data name="NameIdentifier" xml:space="preserve">
+    <value>Уникальный идентификатор</value>
   </data>
   <data name="Number" xml:space="preserve">
     <value>Номер</value>

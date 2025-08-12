@@ -248,7 +248,7 @@ namespace Ans.Net8.Common
 			params ResourceManager[] resources)
 		{
 			var helper1 = new ResourcesHelper(resources);
-			var s1 = helper1.GetString(key);
+			var s1 = helper1.GetCalcFaceHelper(key).GetFace();
 			Localization(s1);
 		}
 

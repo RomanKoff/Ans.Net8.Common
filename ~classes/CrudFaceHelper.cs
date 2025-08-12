@@ -1,4 +1,6 @@
-﻿namespace Ans.Net8.Common
+﻿using System.Text;
+
+namespace Ans.Net8.Common
 {
 
 	public interface ICrudFace
@@ -21,6 +23,18 @@
 		/* ctors */
 
 
+		/// <param name="face">
+		/// "title|shortTitle|description|sample|helpLink"
+		/// </param>
+		public CrudFaceHelper(
+			string name,
+			string face)
+		{
+			var a1 = new StringParser(face);
+			_init(name, a1.Get(0), a1.Get(1), a1.Get(2), a1.Get(3), a1.Get(4));
+		}
+
+
 		public CrudFaceHelper(
 			string name,
 			string title,
@@ -29,20 +43,7 @@
 			string sample,
 			string helpLink)
 		{
-			Name = name;
-			_init(title, shortTitle, description, sample, helpLink);
-		}
-
-
-		/// <param name="face">
-		/// "title|shortTitle|description|sample|helpLink"
-		/// </param>
-		public CrudFaceHelper(
-			string name,
-			string face)
-		{
-			Name = name;
-			Face = face;
+			_init(name, title, shortTitle, description, sample, helpLink);
 		}
 
 
@@ -50,52 +51,29 @@
 
 
 		public string Name { get; set; }
-
-
-		private string _title;
-		public string Title
-		{
-			get => HasTitle ? _title : Name;
-			set => _title = value;
-		}
+		public string Title { get; set; }
+		public string ShortTitle { get; set; }
+		public string Description { get; set; }
+		public string Sample { get; set; }
+		public string HelpLink { get; set; }
 
 
 		/* readonly properties */
 
 
-		private string _shortTitle;
-		public string ShortTitle
-		{
-			get => HasShortTitle ? _shortTitle : Title;
-			private set => _shortTitle = value;
-		}
+		public string TitleCalc
+			=> HasTitle ? Title : Name;
 
-
-		public string Description { get; private set; }
-		public string Sample { get; private set; }
-		public string HelpLink { get; private set; }
-
-
-		public string Face
-		{
-			get => string.Join("|", _title, _shortTitle, Description, Sample, HelpLink);
-			private set
-			{
-				var a1 = new StringParser(value);
-				_init(a1.Get(0), a1.Get(1), a1.Get(2), a1.Get(3), a1.Get(4));
-			}
-		}
-
-
-		/* readonly properties */
+		public string ShortTitleCalc
+			=> HasShortTitle ? ShortTitle : TitleCalc;
 
 
 		public bool HasTitle
-			=> !string.IsNullOrEmpty(_title);
+			=> !string.IsNullOrEmpty(Title);
 
 
 		public bool HasShortTitle
-			=> !string.IsNullOrEmpty(_shortTitle);
+			=> !string.IsNullOrEmpty(ShortTitle);
 
 
 		public bool HasDescription
@@ -110,16 +88,37 @@
 			=> !string.IsNullOrEmpty(HelpLink);
 
 
+		public bool HasFace
+			=> HasTitle || HasShortTitle || HasDescription || HasSample || HasHelpLink;
+
+
+
+		/* functions */
+
+
+		public string GetFace()
+		{
+			var sb1 = new StringBuilder(Title);
+			sb1.Append($"|{ShortTitle}");
+			sb1.Append($"|{Description}");
+			sb1.Append($"|{Sample}");
+			sb1.Append($"|{HelpLink}");
+			return sb1.ToString();
+		}
+
+
 		/* privates */
 
 
 		private void _init(
+			string name,
 			string title,
 			string shortTitle,
 			string description,
 			string sample,
 			string helpLink)
 		{
+			Name = name;
 			Title = title;
 			ShortTitle = shortTitle;
 			Description = description;

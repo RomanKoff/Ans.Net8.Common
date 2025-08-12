@@ -13,7 +13,7 @@ namespace Ans.Net8.Common
 		public ResourcesHelper(
 			params ResourceManager[] resources)
 		{
-			Resources = resources;
+			Resources = resources.GetAdd(Faces.ResourceManager);
 		}
 
 
@@ -26,30 +26,40 @@ namespace Ans.Net8.Common
 		/* functions */
 
 
-		public string GetString(
+		public CrudFaceHelper GetCalcFaceHelper(
 			string key)
 		{
 			if (key == null)
 				return null;
+			var face1 = new CrudFaceHelper(key, key);
 			if (Resources == null)
-				return key;
+				return face1;
 			foreach (var resource1 in Resources)
 			{
 				var s1 = resource1?.GetString(key);
 				if (!string.IsNullOrEmpty(s1))
-					return s1;
+				{
+					var face2 = new CrudFaceHelper(key, s1);
+					if (face2.HasTitle)
+						face1.Title = face2.Title;
+					if (face2.HasShortTitle)
+						face1.ShortTitle = face2.ShortTitle;
+					if (face2.HasDescription)
+						face1.Description = face2.Description;
+					if (face2.HasSample)
+						face1.Sample = face2.Sample;
+					if (face2.HasHelpLink)
+						face1.HelpLink = face2.HelpLink;
+				}
 			}
-			return null;
+			return face1;
 		}
 
 
 		public CrudFaceHelper GetFaceHelper(
 			string name)
 		{
-			var s1 = GetString(name)
-				?? Faces.ResourceManager.GetString(name)
-				?? name;
-			return new CrudFaceHelper(name, s1);
+			return new CrudFaceHelper(name, GetCalcFaceHelper(name).GetFace());
 		}
 
 	}
