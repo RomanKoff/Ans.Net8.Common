@@ -19,7 +19,7 @@ namespace Ans.Net8.Common
 		/* functions */
 
 
-		public static string Detault(
+		public static string Default(
 			string current,
 			string defaultValue)
 		{
@@ -28,7 +28,7 @@ namespace Ans.Net8.Common
 		}
 
 
-		public static int Detault(
+		public static int Default(
 			int current,
 			int defaultValue,
 			int nullValue = 0)
