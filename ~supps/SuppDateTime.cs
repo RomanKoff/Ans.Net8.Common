@@ -184,6 +184,14 @@
 			date1 = date1.AddSeconds(value).ToLocalTime();
 			return date1;
 		}
+		public static DateTime? GetDateTimeFromUnixTimeStamp(
+			double? value)
+		{
+			// Unix timestamp is seconds past epoch
+			return value == null
+				? null
+				: GetDateTimeFromUnixTimeStamp(value.Value);
+		}
 
 
 		public static DateTime GetDateTimeFromJavaTimeStamp(
@@ -193,6 +201,14 @@
 			var date1 = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 			date1 = date1.AddMilliseconds(value).ToLocalTime();
 			return date1;
+		}
+		public static DateTime? GetDateTimeFromJavaTimeStamp(
+			double? value)
+		{
+			// Java timestamp is milliseconds past epoch
+			return value == null
+				? null
+				: GetDateTimeFromJavaTimeStamp(value.Value);
 		}
 
 
