@@ -18,11 +18,30 @@
 				helper1.PaginationHelper);
 			Items = helper1.Query
 				.Select(func).AsEnumerable();
+			ItemsCount = Items.Count();
+			HasItems = ItemsCount > 0;
 		}
 
 
+		/// <summary>
+		/// Пагинатор
+		/// </summary>
 		public PaginationModel Pagination { get; }
+
+		/// <summary>
+		/// Публикации
+		/// </summary>
 		public IEnumerable<TModel> Items { get; }
+
+		/// <summary>
+		/// Количество публикаций
+		/// </summary>
+		public int ItemsCount { get; }
+
+		/// <summary>
+		/// Есть публикации
+		/// </summary>
+		public bool HasItems { get; }
 
 	}
 

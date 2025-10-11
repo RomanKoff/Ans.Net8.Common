@@ -15,7 +15,7 @@ namespace Ans.Net8.Common
 		{
 			var a1 = source.Split(separator);
 			if (a1.Length >= count)
-				return a1.Take(count).ToArray();
+				return [.. a1.Take(count)];
 			var a2 = new string[count];
 			foreach (var (item1, index1) in a1.WithIndex())
 				a2[index1] = item1;
