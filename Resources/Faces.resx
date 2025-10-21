@@ -198,17 +198,14 @@
   <data name="IsActive" xml:space="preserve">
     <value>Активно</value>
   </data>
-  <data name="IsApply" xml:space="preserve">
-    <value>Примененный</value>
-  </data>
   <data name="IsClose" xml:space="preserve">
     <value>Закрыто</value>
   </data>
   <data name="IsDisabled" xml:space="preserve">
-    <value>Отключено</value>
+    <value>Отключено|Откл.</value>
   </data>
   <data name="IsEnabled" xml:space="preserve">
-    <value>Включено</value>
+    <value>Включено|Вкл.</value>
   </data>
   <data name="IsHidden" xml:space="preserve">
     <value>Скрытый</value>

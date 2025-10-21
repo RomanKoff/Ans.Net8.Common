@@ -304,6 +304,15 @@ namespace Ans.Net8.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to просмотр.
+        /// </summary>
+        public static string Title_Detail {
+            get {
+                return ResourceManager.GetString("Title_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to редактировать.
         /// </summary>
         public static string Title_Edit {

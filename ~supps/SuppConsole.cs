@@ -233,6 +233,18 @@ namespace Ans.Net8.Common
 			return Console.ReadKey(true);
 		}
 
+
+		public static bool GetCase(
+			string query)
+		{
+			Console.Write($"{query} (y|n)? ");
+			InputClear();
+			while (!Console.KeyAvailable) { }
+			var key1 = Console.ReadKey(true);
+			Console.WriteLine();
+			return key1.KeyChar is 'y' or 'Y';
+		}
+
 	}
 
 }

@@ -217,6 +217,9 @@
   <data name="Title_Delete" xml:space="preserve">
     <value>удалить</value>
   </data>
+  <data name="Title_Detail" xml:space="preserve">
+    <value>просмотр</value>
+  </data>
   <data name="Title_Edit" xml:space="preserve">
     <value>редактировать</value>
   </data>

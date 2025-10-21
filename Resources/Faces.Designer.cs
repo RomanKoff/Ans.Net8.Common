@@ -304,15 +304,6 @@ namespace Ans.Net8.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Примененный.
-        /// </summary>
-        public static string IsApply {
-            get {
-                return ResourceManager.GetString("IsApply", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Закрыто.
         /// </summary>
         public static string IsClose {
@@ -322,7 +313,7 @@ namespace Ans.Net8.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отключено.
+        ///   Looks up a localized string similar to Отключено|Откл..
         /// </summary>
         public static string IsDisabled {
             get {
@@ -331,7 +322,7 @@ namespace Ans.Net8.Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Включено.
+        ///   Looks up a localized string similar to Включено|Вкл..
         /// </summary>
         public static string IsEnabled {
             get {
