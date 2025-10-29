@@ -80,7 +80,7 @@ namespace Ans.Net8.Common
 			{ " )", ")" },
 			{ "[ ", "[" },
 			{ " ]", "]" },
-			{  " …", "…" },
+			{ " …", "…" },
 		};
 		public static string GetTypografFix(
 			string value)
@@ -98,23 +98,29 @@ namespace Ans.Net8.Common
 			var value1 = GetTypografFix(value);
 			if (string.IsNullOrEmpty(value1) || value1 == " ")
 				return null;
-			var f1 = value1.StartsWith(' ');
-			var f2 = value1.Length > 1 && value1.EndsWith(' ');
+			var fStartSpace1 = value1.StartsWith(' ');
+			var fEndSpace2 = value1.Length > 1 && value1.EndsWith(' ');
 			var a1 = value1.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+			string res1;
 			if (a1.Length == 1)
-				return a1[0];
-			var sb1 = new StringBuilder();
-			foreach (var w1 in a1.SkipLast(1))
 			{
-				sb1.Append(w1);
-				sb1.Append(w1.Length < 4 ? "&nbsp;" : " ");
+				res1 = a1[0];
 			}
-			var s1 = sb1.ToString();
-			var last1 = a1.Last();
-			var s2 = (last1.Length < 4 && s1[^1] == ' ')
-				? $"{s1[..^1]}&nbsp;{last1}"
-				: $"{s1}{last1}";
-			return $"{f1.Make(" ")}{s2}{f2.Make(" ")}";
+			else
+			{
+				var sb1 = new StringBuilder();
+				foreach (var w1 in a1.SkipLast(1))
+				{
+					sb1.Append(w1);
+					sb1.Append(w1.Length < 4 ? "&nbsp;" : " ");
+				}
+				var s1 = sb1.ToString();
+				var last1 = a1.Last();
+				res1 = (last1.Length < 4 && s1[^1] == ' ')
+					? $"{s1[..^1]}&nbsp;{last1}"
+					: $"{s1}{last1}";
+			}
+			return $"{fStartSpace1.Make(" ")}{res1}{fEndSpace2.Make(" ")}";
 		}
 
 
