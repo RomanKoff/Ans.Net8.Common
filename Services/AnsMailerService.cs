@@ -51,6 +51,8 @@ namespace Ans.Net8.Common.Services
 			return new MailboxAddress(
 				Encoding.UTF8, title, address);
 		}
+
+
 		public static MailboxAddress GetMailboxAddress(
 			string address)
 		{

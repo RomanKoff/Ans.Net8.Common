@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Ans.Net8.Common
 {
