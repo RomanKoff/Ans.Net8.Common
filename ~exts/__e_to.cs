@@ -1,26 +1,12 @@
-﻿namespace Ans.Net8.Common
+﻿using Microsoft.Extensions.Primitives;
+
+namespace Ans.Net8.Common
 {
 
 	public static partial class __e_to
 	{
 
 		/* functions */
-
-
-		public static IDictionary<string, string> ToStringDictionary(
-			this IEnumerable<string> source)
-		{
-			if (!(source?.Count() > 0))
-				return null;
-			var dict1 = new Dictionary<string, string>();
-			foreach (var item1 in source)
-			{
-				var a1 = item1.Split('=');
-				if (a1.Length == 2)
-					dict1.Add(a1[0], a1[1]);
-			}
-			return dict1;
-		}
 
 
 		public static IEnumerable<IEnumerable<T>> ToGrid<T>(

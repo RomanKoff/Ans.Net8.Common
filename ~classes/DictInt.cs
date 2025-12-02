@@ -1,20 +1,20 @@
 ﻿namespace Ans.Net8.Common
 {
 
-	public class DictString
-		: _Dict_Proto<string, string>
+	public class DictInt
+		: _Dict_Proto<int, string>
 	{
 
 		/* ctors */
 
 
-		public DictString()
+		public DictInt()
 			: base()
 		{
 		}
 
 
-		public DictString(
+		public DictInt(
 			string serialization)
 			: base(serialization)
 		{
@@ -24,10 +24,11 @@
 		/* overrides */
 
 
-		public override string StringToKey(
+		public override int StringToKey(
 			string key)
 		{
-			return key;
+			return key.ToInt()
+				?? throw new NotImplementedException();
 		}
 
 
@@ -39,9 +40,9 @@
 
 
 		public override string KeyToString(
-			string key)
+			int key)
 		{
-			return key;
+			return key.ToString();
 		}
 
 

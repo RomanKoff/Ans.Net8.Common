@@ -33,6 +33,14 @@ namespace Ans.Net8.Common.Services
 
 
 
+	public class FakeMailerService
+		: IMailerService
+	{
+		Task IMailerService.SendAsync(MailMessageModel message) { return null; }
+	}
+
+
+
 	public class AnsMailerService(
 		IMailerServiceOptions options)
 		: IMailerService
