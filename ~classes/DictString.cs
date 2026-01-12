@@ -21,6 +21,13 @@
 		}
 
 
+		public DictString(
+			IEnumerable<string> serialization)
+			: base(serialization)
+		{
+		}
+
+
 		/* overrides */
 
 

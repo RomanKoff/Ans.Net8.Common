@@ -6,6 +6,12 @@ namespace Ans.Net8.Common
 	public static partial class _Consts
 	{
 
+		public const string REGEX_NODENAME
+			= @"^([0-9a-z_-]+)$";
+
+		public const string REGEX_PAGENAME
+			= REGEX_NODENAME;
+
 		public const string REGEX_NAME
 			= @"^([a-z_][0-9a-z._-]+)$";
 
@@ -21,6 +27,12 @@ namespace Ans.Net8.Common
 
 		[GeneratedRegex(@"[]^\\-]")]
 		public static partial Regex G_REGEX_ENCODE();
+
+		[GeneratedRegex(REGEX_NODENAME)]
+		public static partial Regex G_REGEX_NODENAME();
+
+		[GeneratedRegex(REGEX_PAGENAME)]
+		public static partial Regex G_REGEX_PAGENAME();
 
 		[GeneratedRegex(REGEX_NAME)]
 		public static partial Regex G_REGEX_NAME();

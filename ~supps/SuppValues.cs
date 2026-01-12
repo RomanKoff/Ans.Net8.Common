@@ -21,10 +21,14 @@ namespace Ans.Net8.Common
 
 		public static string Default(
 			string current,
-			string defaultValue)
+			params string[] defaultValues)
 		{
-			return (string.IsNullOrEmpty(current))
-				? defaultValue : current;
+			if (!string.IsNullOrEmpty(current))
+				return current;
+			foreach (var value1 in defaultValues)
+				if (!string.IsNullOrEmpty(value1))
+					return value1;
+			return null;
 		}
 
 

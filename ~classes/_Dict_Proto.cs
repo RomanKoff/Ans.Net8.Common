@@ -25,18 +25,26 @@ namespace Ans.Net8.Common
 
 		public _Dict_Proto()
 		{
+			Clear();
+		}
+
+
+		public _Dict_Proto(
+			IEnumerable<string> serialization)
+			: this()
+		{
+			if (serialization?.Count() > 0)
+				AddItems(serialization);
 		}
 
 
 		public _Dict_Proto(
 			string serialization)
-			: this()
+			: this(string.IsNullOrEmpty(serialization)
+				  ? null
+				  : serialization.Replace("\\;", _MASK1).Split(';')
+					.Select(x => x.Replace(_MASK1, ";")))
 		{
-			Clear();
-			var s1 = serialization.Replace("\\;", _MASK1);
-			var a1 = s1.Split(';');
-			foreach (var item1 in a1)
-				Add(item1.Replace(_MASK1, ";"));
 		}
 
 
@@ -51,6 +59,14 @@ namespace Ans.Net8.Common
 			var key1 = a1[0].Replace(_MASK1, "=");
 			var value1 = a1[1].Replace(_MASK1, "=");
 			Add(StringToKey(key1), StringToValue(value1));
+		}
+
+
+		public void AddItems(
+			IEnumerable<string> serialization)
+		{
+			foreach (var item1 in serialization)
+				Add(item1);
 		}
 
 
